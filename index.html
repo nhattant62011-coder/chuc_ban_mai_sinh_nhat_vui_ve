@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Mai 🎂</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive;
+    background: linear-gradient(135deg, #ffd6e7, #fff0f5, #e8d9ff);
+    min-height: 100vh;
+    overflow-x: hidden;
+    text-align: center;
+    color: #ff5c9a;
+}
+
+.container {
+    padding: 50px 15px;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    font-size: clamp(35px, 7vw, 65px);
+    animation: bounce 2s infinite;
+    text-shadow: 3px 3px white;
+}
+
+.subtitle {
+    margin-top: 15px;
+    font-size: 20px;
+    color: #d86caa;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.cake {
+    font-size: 120px;
+    margin: 35px 0 15px;
+    cursor: pointer;
+    animation: wiggle 2s infinite;
+    display: inline-block;
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.message {
+    background: rgba(255,255,255,0.8);
+    border: 3px dashed #ff9fc6;
+    border-radius: 30px;
+    padding: 25px;
+    max-width: 550px;
+    margin: 25px auto;
+    box-shadow: 0 10px 30px #ffb6d5;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+button {
+    border: none;
+    padding: 15px 25px;
+    margin: 10px;
+    border-radius: 30px;
+    background: #ff75ac;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px #ffb6d5;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.12);
+    background: #ff4592;
+}
+
+#letter {
+    display: none;
+    max-width: 500px;
+    margin: 25px auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 5px 25px #ff9fc6;
+    line-height: 2;
+    animation: appear 1s;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.floating {
+    position: fixed;
+    bottom: -50px;
+    animation: fly 7s linear forwards;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes fly {
+    0% { transform: translateY(0) rotate(0); opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+.star {
+    position: fixed;
+    pointer-events: none;
+    animation: sparkle 1s forwards;
+    z-index: 10;
+}
+
+@keyframes sparkle {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(2) translateY(-50px); opacity: 0; }
+}
+
+.footer {
+    margin: 35px;
+    color: #d86caa;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎀 Happy Birthday 🎀</h1>
+
+    <div class="subtitle">
+        Chúc mừng sinh nhật cô gái đáng yêu nhất! 💗
+    </div>
+
+    <div class="cake" onclick="blowCandle()">
+        🎂
+    </div>
+
+    <h2>Happy Birthday Mai! 💕</h2>
+
+    <div class="message">
+        🌷 Chúc Mai có một ngày sinh nhật thật vui vẻ! 🌷
+        <br>
+        Mong rằng tuổi mới sẽ mang đến cho Mai thật nhiều
+        niềm vui, hạnh phúc và những điều tuyệt vời nhất.
+        <br>
+        Luôn xinh đẹp, đáng yêu và cười thật nhiều nhé!
+        <br>
+        💖 You deserve all the happiness in the world! 💖
+    </div>
+
+    <button onclick="openLetter()">
+        💌 Mở thư bí mật
+    </button>
+
+    <button onclick="fireworks()">
+        🎆 Bấm để nhận điều bất ngờ
+    </button>
+
+    <button onclick="makeHearts()">
+        💗 Gửi Mai thật nhiều trái tim
+    </button>
+
+    <div id="letter">
+        <h2>💌 Gửi Mai 💌</h2>
+        <p>
+            Chúc mừng sinh nhật Mai nhaaa! 🥳
+            <br>
+            Chúc Mai tuổi mới luôn rạng rỡ,
+            gặp nhiều may mắn và luôn được yêu thương.
+            <br>
+            Mong mọi điều ước của Mai đều trở thành hiện thực.
+            <br>
+            Cảm ơn vì đã xuất hiện trên thế giới này!
+            <br><br>
+            🎀 Happy Birthday To You! 🎀
+            <br>
+            💗💗💗
+        </p>
+    </div>
+
+    <div class="footer">
+        Made with 💗 just for Mai
+    </div>
+
+</div>
+
+<script>
+
+// Hiệu ứng hoa và trái tim bay
+const emojis = ["💗","💕","🌸","🎀","✨","💖","🌷","🦋"];
+
+function createFloating() {
+    const el = document.createElement("div");
+    el.className = "floating";
+    el.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+
+    el.style.left = Math.random()*100 + "vw";
+    el.style.fontSize = (20 + Math.random()*25) + "px";
+    el.style.animationDuration = (4 + Math.random()*5) + "s";
+
+    document.body.appendChild(el);
+
+    setTimeout(() => el.remove(), 9000);
+}
+
+setInterval(createFloating, 350);
+
+// Mở thư
+function openLetter() {
+    const letter = document.getElementById("letter");
+    letter.style.display = "block";
+    letter.scrollIntoView({behavior:"smooth", block:"center"});
+    fireworks();
+}
+
+// Pháo hoa
+function fireworks() {
+    for(let i=0; i<100; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+        star.innerHTML = ["✨","💖","🎉","🌟"][Math.floor(Math.random()*4)];
+
+        star.style.left = Math.random()*100 + "vw";
+        star.style.top = Math.random()*100 + "vh";
+        star.style.fontSize = (15+Math.random()*25)+"px";
+
+        document.body.appendChild(star);
+        setTimeout(()=>star.remove(),1000);
+    }
+}
+
+// Mưa trái tim
+function makeHearts() {
+    for(let i=0; i<50; i++) {
+        setTimeout(createFloating, i*50);
+    }
+}
+
+// Thổi nến
+let candle = true;
+
+function blowCandle() {
+    const cake = document.querySelector(".cake");
+
+    if(candle) {
+        cake.innerHTML = "🍰";
+        alert("🎉 Chúc Mai mọi điều ước đều thành hiện thực!");
+        candle = false;
+    } else {
+        cake.innerHTML = "🎂";
+        candle = true;
+    }
+}
+
+// Click màn hình tạo trái tim
+document.addEventListener("click", function(e) {
+    const heart = document.createElement("div");
+    heart.innerHTML = "💗";
+    heart.style.position = "fixed";
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
+    heart.style.pointerEvents = "none";
+    heart.style.zIndex = "99";
+    heart.style.animation = "sparkle 1s forwards";
+
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),1000);
+});
+
+</script>
+
+</body>
+</html>
